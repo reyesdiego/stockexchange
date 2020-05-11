@@ -8,7 +8,7 @@ module.exports.QuoteService = (injections) => {
         try {
             const response = await axios({
                 method: "get",
-                baseURL: 'https://www.alphavantage.co/',
+                baseURL: process.env.ALPHA_VANTAGE_URL,
                 url: `/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${process.env.ALPHA_VANTAGE_KEY}`
             });
             if (response.data.Note) {

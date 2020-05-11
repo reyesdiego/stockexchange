@@ -2,8 +2,9 @@ const envSchema = require('env-schema');
 const path = require('path');
 const env = require('./config/environment');
 // Environment variables.
-env({envSchema, path});
+env({ envSchema, path });
 
+const fp = require('fastify-plugin');
 
 const fastify = require('fastify')({
     logger: true
@@ -13,14 +14,31 @@ const fastify = require('fastify')({
 const swaggerConfig = require('./config/swagger');
 fastify.register(require('fastify-swagger'), swaggerConfig);
 
+const auth = fp((server, opts, next) => {
+    server.register(require('fastify-jwt'), {
+        secret: 'change this to something secret'
+    });
+    server.decorate('authenticate', async (req, res) => {
+        try {
+            await req.jwtVerify();
+        } catch (err) {
+            res.send(err);
+        }
+    });
+
+    next();
+});
+
 const start = async () => {
     try {
         fastify
+            .register(auth)
             .register(require('fastify-helmet'))
             .register(require('fastify-cors'), {})
             .register(require('fastify-compress'), { global: false })
             .register(require('./routes/server'))
             .register(require('./routes/quote'), { prefix: '/quote' })
+            .register(require('./routes/user'), { prefix: '/users' });
 
         await fastify
             .listen(process.env.PORT, '::')
@@ -48,8 +66,6 @@ process.on('SIGTERM', function onSigterm() {
 
 // shut down server
 function shutdown() {
-    // NOTE: server.close is for express based apps
-    // If using hapi, use `server.stop`
     fastify.close(function onServerClosed(err) {
         console.log('OK')
         if (err) {
