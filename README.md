@@ -26,3 +26,14 @@ The API is running in port 8080
 curl http://localhost:8080
 --> {"hi": "there"}
 ```
+
+##Development
+
+To run the project in development just run (port 30003)
+```
+npm run dev
+```
+Running unit test
+```
+npm run test
+```
