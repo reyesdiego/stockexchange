@@ -16,7 +16,7 @@ class User {
                 exp: Math.floor(Date.now() / 1000) + 120,
                 user_id: req.body.email
             });
-            res.send({ token });
+            res.send({ authorization: `Bearer ${token}` });
         } catch (err) {
             res.status(401).send('Unauthorized');
         }
