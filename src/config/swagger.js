@@ -11,9 +11,17 @@ module.exports = {
       url: "https://swagger.io",
       description: "Find more info here"
     },
-    host: `localhost:${process.env.PORT || 3000}`,
-    schemes: ["http", "https"],
+    host: `localhost:${process.env.PORT}`,
+    schemes: ["http"],
     consumes: ["application/json"],
-    produces: ["application/json"]
+    produces: ["application/json"],
+    securityDefinitions: {
+      authorization: {
+        name: 'authorization',
+        type: 'apiKey',
+        in: 'header'
+      }
+    },
+    security: [{ authorization: [] }]
   }
 };

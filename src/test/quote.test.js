@@ -7,7 +7,12 @@ describe('QUOTE', function () {
         // Arrange
         const mockResult = require('../test/mocks/quote-alphavantage.json');
         const model = require('../models/quote');
-        const process = { env: { ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ' } };
+        const process = {
+            env: {
+                ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ', ALPHA_VANTAGE_URL:'https://www.alphavantage.co/'
+
+            }
+        };
         const axios = jest.fn().mockReturnValue(Promise.resolve({
             data: mockResult
         }));
@@ -32,7 +37,11 @@ describe('QUOTE', function () {
     test('Should not return quotes, must throw an error', async () => {
         // Arrange
         const axios = jest.fn().mockRejectedValue(new Error('Mocked Error'));
-        const process = { env: { ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ' } };
+        const process = {
+            env: {
+                ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ', ALPHA_VANTAGE_URL:'https://www.alphavantage.co/'
+            }
+        };
         const quoteService = QuoteService({ axios, process });
 
         // Act & Assert
