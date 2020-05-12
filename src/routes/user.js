@@ -1,7 +1,41 @@
-const user = require('../controllers/users');
+const user = require('../controllers/users-controller');
 
 module.exports = async function (fastify) {
     const routes = [
+        {
+            method: 'POST',
+            url: '/',
+            schema: {
+                tags: ['User'],
+                summary: 'Creates a users of Stack Exchange API.',
+                description: 'Creation of User for Authorization',
+                body: {
+                    type: 'object',
+                    required: ['email', 'password'],
+                    properties: {
+                        createdAt: {
+                            type: 'string',
+                            format: 'date',
+                            description: 'User database Registration Date'
+                        },
+                        firstname: {
+                            type: 'string',
+                            description: 'User First Name.'
+                        },
+                        lastname: {
+                            type: 'string',
+                            description: 'User Last Name.'
+                        },
+                        email: {
+                            type: 'string',
+                            description: 'Client email account.'
+                        }
+                    }
+                }
+            },
+            description: 'Returns the new User',
+            handler: user.register
+        },
         {
             method: 'POST',
             url: '/login',

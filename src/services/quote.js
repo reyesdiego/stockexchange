@@ -1,9 +1,12 @@
-module.exports.QuoteService = (injections) => {
-
+module.exports.QuoteService = injections => {
+    // arrange
     const getQuote = GetQuote.bind(null, injections);
     const getSymbols = GetSymbols.bind(null, injections);
+
+    // public functions
     return { getQuote, getSymbols };
 
+    // private functions
     async function GetSymbols({ axios, model, process }, symbol) {
         try {
             const response = await axios({
