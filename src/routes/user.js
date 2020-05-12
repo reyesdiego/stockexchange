@@ -28,7 +28,13 @@ module.exports = async function (fastify) {
                         },
                         email: {
                             type: 'string',
-                            description: 'Client email account.'
+                            description: 'User email account.',
+                            format: 'email'
+                        },
+                        password: {
+                            type: 'string',
+                            description: 'User password account.',
+                            minLength: 6
                         }
                     }
                 }
