@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const dotenv = require('dotenv');
 dotenv.config();
 const { QuoteService } = require("../services/quote");
@@ -49,7 +50,7 @@ describe('QUOTE', function () {
         const quoteService = QuoteService({ axios, process });
 
         // Act & Assert
-        await expect(quoteService.getQuote()).rejects.toThrow('Mocked Error')
+        await expect(quoteService.getQuote()).rejects.toThrow('Mocked Error');
     });
 });
 
@@ -78,11 +79,11 @@ describe('SYMBOLS', function () {
             baseURL: 'https://www.alphavantage.co/',
             url: `/query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=66YXZOUXSWNRCJQZ`
         });
-        expect(data).toHaveLength(2)
+        expect(data).toHaveLength(2);
         expect(data[0]).toHaveProperty('provider');
         expect(data[0]).toHaveProperty('symbol');
         expect(data[0]).toHaveProperty('name');
 
-    })
+    });
 });
 

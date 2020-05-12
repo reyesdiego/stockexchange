@@ -1,6 +1,6 @@
 const quote = require('../controllers/quote-controller');
 
-module.exports = async function (fastify, opts, next) {
+module.exports = async function (fastify) {
     const routes = [
         {
             method: 'GET',
@@ -85,7 +85,8 @@ module.exports = async function (fastify, opts, next) {
                                 provider: 'Alpha Vantage',
                                 symbol: 'IBM',
                                 name: 'International Business Machines Corporation'
-                            }]
+                            }
+                        ]
                     }
                 }
             },
@@ -94,7 +95,7 @@ module.exports = async function (fastify, opts, next) {
 
     ];
 
-    routes.forEach(route => {
+    routes.forEach((route) => {
         fastify.route(route);
     });
 };

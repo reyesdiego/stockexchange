@@ -3,14 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "config": {
+    "ghooks": {
+      "pre-commit": "eslint ./src"
+    }
+  },
   "scripts": {
     "test": "jest",
     "dev": "nodemon src/."
   },
   "keywords": [],
-  "author": "",
+  "author": "Diego Reyes",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^7.0.0",
+    "ghooks": "^2.0.4",
     "jest": "^26.0.1"
   },
   "dependencies": {

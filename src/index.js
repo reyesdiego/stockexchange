@@ -30,20 +30,20 @@ const auth = fp((server, opts, next) => {
     next();
 });
 
-const start = async () => {
+async function start() {
     try {
-        fastify
-            .register(auth)
-            .register(require('fastify-helmet'))
-            .register(require('fastify-cors'), {})
-            .register(require('fastify-compress'), { global: false })
-            .register(require('./routes/server'))
-            .register(require('./routes/quote'), { prefix: '/quote' })
-            .register(require('./routes/user'), { prefix: '/users' });
+        fastify.
+            register(auth).
+            register(require('fastify-helmet')).
+            register(require('fastify-cors'), {}).
+            register(require('fastify-compress'), { global: false }).
+            register(require('./routes/server')).
+            register(require('./routes/quote'), { prefix: '/quote' }).
+            register(require('./routes/user'), { prefix: '/users' });
 
-        await fastify
-            .listen(process.env.PORT, '::')
-            .catch(err => {
+        await fastify.
+            listen(process.env.PORT, '::').
+            catch(err => {
                 fastify.log.error('Error starting server:', err);
                 process.exit(1);
             });
@@ -51,30 +51,29 @@ const start = async () => {
         fastify.log.error(err);
         process.exit(1);
     }
-};
+}
 
 // quit on ctrl-c when running docker in terminal
 process.on('SIGINT', function onSigint() {
-    console.info('Got SIGINT (aka ctrl-c in docker). Graceful shutdown ', new Date().toISOString());
+    fastify.log.warn('Got SIGINT (aka ctrl-c in docker). Graceful shutdown ', new Date().toISOString());
     shutdown();
 });
 
 // quit properly on docker stop
 process.on('SIGTERM', function onSigterm() {
-    console.info('Got SIGTERM (docker container stop). Graceful shutdown ', new Date().toISOString());
+    fastify.log.warn('Got SIGTERM (docker container stop). Graceful shutdown ', new Date().toISOString());
     shutdown();
-})
+});
 
 // shut down server
 function shutdown() {
     fastify.close(function onServerClosed(err) {
         if (err) {
-            console.error(err);
+            fastify.log.error(err);
             process.exitCode = 1;
         }
         process.exit();
-    })
+    });
 }
-
 
 start();

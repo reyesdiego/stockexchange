@@ -1,4 +1,3 @@
-
 class Symbol {
     constructor(
         provider,
@@ -10,7 +9,7 @@ class Symbol {
         this.name = name;
     }
 
-    fromJSON(json) {
+    static fromJSON(json) {
         return new Symbol(json.provider, json.symbol, json.name);
     }
 }
