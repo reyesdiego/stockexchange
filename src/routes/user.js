@@ -8,7 +8,7 @@ module.exports = async function (fastify) {
             schema: {
                 tags: ['User'],
                 summary: 'Creates a users of Stack Exchange API.',
-                description: 'Creation of User for Authorization',
+                description: 'Creation of User for Authorization, only the email and password are need for the example',
                 body: {
                     type: 'object',
                     required: ['email', 'password'],
@@ -47,6 +47,8 @@ module.exports = async function (fastify) {
             url: '/login',
             schema: {
                 tags: ['Authorization'],
+                summary: 'Login the user on Stack Exchange API.',
+                description: 'Validates the user and creates an Authorization token.',
                 body: {
                     type: 'object',
                     required: ['email', 'password'],

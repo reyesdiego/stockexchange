@@ -7,8 +7,8 @@ module.exports = async function (fastify) {
             url: '/',
             schema: {
                 tags: ['Stock Series'],
-                summary: 'this service returns the latest price and volume information for a security of your choice.',
-                description: 'This service returns the latest price and volume information for a security of your choice.',
+                summary: 'This service returns the latest price information for a quote of your choice.',
+                description: 'This service returns the latest price information. To access this endpoint the user must login first to get a token. <b>Use the Register and Login endpoints. With the token go to the Authorize button in this page and set the Authorization token</b>',
                 query: {
                     type: 'object',
                     required: ['symbol'],

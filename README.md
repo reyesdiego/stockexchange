@@ -4,11 +4,11 @@ This project contains the Stock Exchange API that powers the platform so backend
 
 ## Setting up project
 
-This project can be run in a docker container. The are 2 ways to setup the api, under port 3000 running with nodejs or with nginx with a reverse proxy under the port 8080.
+This project can be run in a docker container. The are 2 ways to setup the api, under port 3000 running with nodejs or with a nginx reverse proxy under the port 8080.
 
 In root directory execute the following command
 ```bash
-make build-api
+make up
 ```
 The API is running in port 3000
 ```bash
@@ -18,8 +18,7 @@ curl http://localhost:3000
 
 Then to create and run the API with nginx with reverse proxy
 ```bash
-make build-nginx
-make run
+make run-nginx
 ```
 The API is running in port 8080
 ```bash
@@ -29,11 +28,22 @@ curl http://localhost:8080
 
 ##Development
 
-To run the project in development just run (port 30003)
+To run the project in development.
 ```bash
 npm run dev
+```
+The API will listen on port 30003. It will run via nodemon which must be installed globally, if it is not:
+```bash
+npm i nodemon --save-dev
 ```
 Running unit test
 ```bash
 npm run test
 ```
+
+Api documentation can be seen in the browser http://localhost:30003/documentation
+
+
+**Final notes:**
+
+Any question about the challenge please send me an email anytime to reyesdiego@hotmail.com

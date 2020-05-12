@@ -3,7 +3,7 @@ const routes = [
         method: 'GET',
         url: '/',
         schema: {
-            summary: 'Dummy endpoint to check availability',
+            summary: 'Endpoint to check availability',
             description: 'Test server',
             tags: ['Server'],
             response: {
