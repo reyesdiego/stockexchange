@@ -14,7 +14,7 @@ class User {
 
             const token = this.jwt.sign({
                 exp: Math.floor(Date.now() / 1000) + 120,
-                user_id: req.body.email
+                email: req.body.email
             });
             res.send({ authorization: `Bearer ${token}` });
         } catch (err) {

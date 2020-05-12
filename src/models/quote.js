@@ -1,4 +1,3 @@
-
 class Quote {
     constructor(
         provider,
@@ -20,7 +19,7 @@ class Quote {
         this.date = date;
     }
 
-    fromJSON(json) {
+    static fromJSON(json) {
         return new Quote(json.provider, json.symbol, json.open, json.high, json.low, json.price, json.previousPrice, json.date);
     }
 }

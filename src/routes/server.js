@@ -1,5 +1,3 @@
-//@ts-check
-
 const routes = [
     {
         method: 'GET',
@@ -21,13 +19,13 @@ const routes = [
                 }
             }
         },
-        handler: async function (req, res) {
+        handler: async function () {
             return { hi: 'there' };
         }
     }
 ];
 
-module.exports = async function (fastify, opts, next) {
+module.exports = async function (fastify) {
     routes.forEach(route => {
         fastify.route(route);
     });

@@ -1,6 +1,6 @@
 const user = require('../controllers/users');
 
-module.exports = async function (fastify, opts, next) {
+module.exports = async function (fastify) {
     const routes = [
         {
             method: 'POST',
