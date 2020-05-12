@@ -7,8 +7,9 @@ module.exports.UserService = injections => {
     return { login, register };
 
     // private functions
-    async function Register({ db }, user) {
+    async function Register({ db, bcrypt }, user) {
         try {
+            const BCRYPT_SALT_ROUNDS = 12;
             const users = db.collection('users');
 
             const userExists = await users.
@@ -18,8 +19,9 @@ module.exports.UserService = injections => {
             if (userExists.length > 0) {
                 throw new Error('User already exists');
             } else {
+                const hashedPassword = await bcrypt.hash(user.password, BCRYPT_SALT_ROUNDS);
                 const newUser = await users.
-                    insert(user);
+                    insert({ ...user, password: hashedPassword });
 
                 return newUser.ops && newUser.ops[0];
             }
@@ -28,14 +30,14 @@ module.exports.UserService = injections => {
         }
     }
 
-    async function Login({ db, jwt }, email, password) {
+    async function Login({ db, jwt, bcrypt }, email, password) {
         try {
             const users = db.collection('users');
             const user = await users.
-                find({ email, password }).
+                find({ email }).
                 toArray();
 
-            if (user.length) {
+            if (user.length && await bcrypt.compare(password, user[0].password)) {
                 const token = jwt.sign({
                     exp: Math.floor(Date.now() / 1000) + 120,
                     email
