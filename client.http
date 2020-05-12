@@ -10,6 +10,16 @@ GET http://localhost:30003/quote/symbols?symbol=IBM
 
 
 ###
+POST http://localhost:30003/users
+Content-Type: application/json
+
+{
+    "email": "diego@hotm.com",
+    "password": "diego1"
+}
+
+
+###
 POST http://localhost:30003/users/login
 Content-Type: application/json
 

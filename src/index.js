@@ -37,6 +37,10 @@ async function start() {
             register(require('fastify-helmet')).
             register(require('fastify-cors'), {}).
             register(require('fastify-compress'), { global: false }).
+            register(require('fastify-mongodb'), {
+                forceClose: true,
+                url: process.env.MONGO_URL
+            }).
             register(require('./routes/server')).
             register(require('./routes/quote'), { prefix: '/quote' }).
             register(require('./routes/user'), { prefix: '/users' });
