@@ -3,7 +3,7 @@ GET http://localhost:30003
 
 ###
 GET http://localhost:30003/quote?symbol=IBM
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODkyNDk2NDYsInVzZXJfaWQiOiJkaWVnb0Bob3RtLmNvbSIsImlhdCI6MTU4OTI0OTUyNn0.yD-pkPLGVSX19CSXyNF0fdXRHW5GjZo_1kP2sT5rHo0
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODkyNzA1NDQsImVtYWlsIjoiZGllZ29AaG90bS5jb20iLCJpYXQiOjE1ODkyNzA0MjR9.IGavWYoyaFIfWFPqQ1ooZ7RB7alRAv2dTRqLWqDDr_Y
 
 ###
 GET http://localhost:30003/quote/symbols?symbol=IBM

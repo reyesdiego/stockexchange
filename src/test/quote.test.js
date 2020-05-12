@@ -10,7 +10,7 @@ describe('QUOTE', function () {
         const { Quote } = require('../models');
         const process = {
             env: {
-                ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ', ALPHA_VANTAGE_URL: 'https://www.alphavantage.co/', ALPHA_VANTAGE_NAME: "Alpha Vantage"
+                PROVIDER: 'ALPHA_VANTAGE', ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ', ALPHA_VANTAGE_URL: 'https://www.alphavantage.co/', ALPHA_VANTAGE_NAME: "Alpha Vantage"
 
             }
         };
@@ -44,7 +44,7 @@ describe('QUOTE', function () {
         const axios = jest.fn().mockRejectedValue(new Error('Mocked Error'));
         const process = {
             env: {
-                ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ', ALPHA_VANTAGE_URL: 'https://www.alphavantage.co/', ALPHA_VANTAGE_NAME: "Alpha Vantage"
+                PROVIDER: 'ALPHA_VANTAGE', ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ', ALPHA_VANTAGE_URL: 'https://www.alphavantage.co/', ALPHA_VANTAGE_NAME: "Alpha Vantage"
             }
         };
         const quoteService = QuoteService({ axios, process });
@@ -61,7 +61,7 @@ describe('SYMBOLS', function () {
         const { Symbol } = require('../models');
         const process = {
             env: {
-                ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ', ALPHA_VANTAGE_URL: 'https://www.alphavantage.co/', ALPHA_VANTAGE_NAME: "Alpha Vantage"
+                PROVIDER: 'ALPHA_VANTAGE', ALPHA_VANTAGE_KEY: '66YXZOUXSWNRCJQZ', ALPHA_VANTAGE_URL: 'https://www.alphavantage.co/', ALPHA_VANTAGE_NAME: "Alpha Vantage"
             }
         };
         const axios = jest.fn().mockReturnValue(Promise.resolve({
