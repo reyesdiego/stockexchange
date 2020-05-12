@@ -1,8 +1,13 @@
 const axios = require('axios');
-const model = require('../models/quote');
+const { Quote, Symbol } = require('../models');
 const { QuoteService } = require("../services/quote");
 
-module.exports.getQuotes = async function (req, res) {
-    const quoteService = QuoteService({ axios, model, process})
+module.exports.getQuote = async function (req, res) {
+    const quoteService = QuoteService({ axios, model: Quote, process })
     res.status(200).send(await quoteService.getQuote(req.query.symbol));
+}
+
+module.exports.getSymbols = async function (req, res) {
+    const quoteService = QuoteService({ axios, model: Symbol, process })
+    res.status(200).send(await quoteService.getSymbols(req.query.symbol));
 }
