@@ -6,7 +6,7 @@ module.exports = async function (fastify, opts, next) {
             method: 'GET',
             url: '/',
             schema: {
-                tags: ['Stock Time Series'],
+                tags: ['Stock Series'],
                 summary: 'this service returns the latest price and volume information for a security of your choice.',
                 description: 'This service returns the latest price and volume information for a security of your choice.',
                 query: {
@@ -15,7 +15,7 @@ module.exports = async function (fastify, opts, next) {
                     properties: {
                         symbol: {
                             type: 'string',
-                            description: 'The symbol of the global security of your choice. For example: symbol=IBM.'
+                            description: 'The symbol of the global security of your choice. For example: symbol=IBM'
                         }
                     }
                 },
@@ -23,6 +23,7 @@ module.exports = async function (fastify, opts, next) {
                     200: {
                         description: 'Successful response',
                         type: 'object',
+                        required: ['provider', 'symbol'],
                         properties: {
                             provider: { type: 'string', description: 'API Service Provider' },
                             symbol: { type: 'string', description: 'Symbol' },
@@ -48,8 +49,49 @@ module.exports = async function (fastify, opts, next) {
                 }
             },
             preValidation: [fastify.authenticate],
-            handler: quote.getQuotes
+            handler: quote.getQuote
+        },
+        {
+            method: 'GET',
+            url: '/symbols',
+            schema: {
+                tags: ['Stock Series'],
+                summary: 'this service returns a list of Symbols.',
+                description: 'This service returns a list of Symbols that matches with symbol param.',
+                query: {
+                    type: 'object',
+                    required: ['symbol'],
+                    properties: {
+                        symbol: {
+                            type: 'string',
+                            description: 'The symbol or part of it to search for: symbol=IB'
+                        }
+                    }
+                },
+                response: {
+                    200: {
+                        description: 'Successful response',
+                        type: 'array',
+                        items: {
+                            type: 'object',
+                            properties: {
+                                provider: { type: 'string', description: 'API Service Provider' },
+                                symbol: { type: 'string', description: 'Symbol' },
+                                name: { type: 'string', description: 'Description of the symbol' }
+                            }
+                        },
+                        example: [
+                            {
+                                provider: 'Alpha Vantage',
+                                symbol: 'IBM',
+                                name: 'International Business Machines Corporation'
+                            }]
+                    }
+                }
+            },
+            handler: quote.getSymbols
         }
+
     ];
 
     routes.forEach(route => {

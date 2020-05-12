@@ -1,4 +1,3 @@
-//@ts-check
 const user = require('../controllers/users');
 
 module.exports = async function (fastify, opts, next) {

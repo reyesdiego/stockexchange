@@ -3,7 +3,10 @@ GET http://localhost:30003
 
 ###
 GET http://localhost:30003/quote?symbol=IBM
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODkxNzg0OTMsInVzZXJfaWQiOiJkaWVnbyIsImlhdCI6MTU4OTE3ODM3M30.auwzLiuRMpkQd4pRi4928I_Kefxwt7zm7qu_Qo_sbZE
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODkyNDk2NDYsInVzZXJfaWQiOiJkaWVnb0Bob3RtLmNvbSIsImlhdCI6MTU4OTI0OTUyNn0.yD-pkPLGVSX19CSXyNF0fdXRHW5GjZo_1kP2sT5rHo0
+
+###
+GET http://localhost:30003/quote/symbols?symbol=IBM
 
 
 ###
@@ -11,6 +14,6 @@ POST http://localhost:30003/users/login
 Content-Type: application/json
 
 {
-    "email": "diego",
-    "password": "diego"
+    "email": "diego@hotm.com",
+    "password": "diego1"
 }

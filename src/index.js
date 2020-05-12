@@ -14,6 +14,7 @@ const fastify = require('fastify')({
 const swaggerConfig = require('./config/swagger');
 fastify.register(require('fastify-swagger'), swaggerConfig);
 
+// Authorization middleware plugin
 const auth = fp((server, opts, next) => {
     server.register(require('fastify-jwt'), {
         secret: 'change this to something secret'
@@ -67,7 +68,6 @@ process.on('SIGTERM', function onSigterm() {
 // shut down server
 function shutdown() {
     fastify.close(function onServerClosed(err) {
-        console.log('OK')
         if (err) {
             console.error(err);
             process.exitCode = 1;

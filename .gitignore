@@ -1,3 +1,4 @@
+.vscode
 node_modules/
 
 # These two files should be git ignored. They are not just for the purpose of the challenge.
