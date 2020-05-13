@@ -29,6 +29,8 @@ curl http://localhost:8080
 ##Development
 
 To run the project in development.
+Note: Be sure to run first ```make up``` in order to have a mongodb instance. To connect to database from locahost connect to ```mongodb://localhost:27018/modusbox```
+
 ```bash
 npm run dev
 ```
@@ -43,6 +45,15 @@ npm run test
 
 Api documentation can be seen in the browser http://localhost:30003/documentation
 
+The API Service for Stock Exchange is https://www.alphavantage.co/
+Set environment variable for such provider
+```bash
+PROVIDER=ALPHA_VANTAGE
+```
+To change provider (the API has a Fake backup provider)
+```bash
+PROVIDER=FAKE_PROVIDER
+```
 
 **Final notes:**
 
