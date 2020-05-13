@@ -1,8 +1,8 @@
-# Stock Exchange
+# Stock Exchange #
 
 This project contains the Stock Exchange API that powers the platform so backend logic is here.
 
-## Setting up project
+## Setting up project ##
 
 This project can be run in a docker container. The are 2 ways to setup the api, under port 3000 running with nodejs or with a nginx reverse proxy under the port 8080.
 
@@ -26,7 +26,12 @@ curl http://localhost:8080
 --> {"hi": "there"}
 ```
 
-##Development
+## Development ##
+
+Clone the project.
+```bash
+git clone https://github.com/reyesdiego/stockexchange.git
+```
 
 To run the project in development.
 Note: Be sure to run first ```make up``` in order to have a mongodb instance. To connect to database from locahost connect to ```mongodb://localhost:27018/modusbox```
