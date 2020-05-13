@@ -62,4 +62,8 @@ PROVIDER=FAKE_PROVIDER
 
 **Final notes:**
 
-Any question about the challenge please send me an email anytime to reyesdiego@hotmail.com
+.env and .env.development files are commented in .gitignore to easy sharing the coding task, they must be git ignored.
+
+
+
+**Any question about the challenge please send me an email anytime to reyesdiego@hotmail.com**
