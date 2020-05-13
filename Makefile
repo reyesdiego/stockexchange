@@ -6,7 +6,7 @@ up:
 down:
 	@cd $(shell pwd);\
 	docker-compose down;\
-	docker rm modusbox-nginx
+	docker rm modusbox-nginx -f
 
 stop:
 	@cd $(shell pwd);\
