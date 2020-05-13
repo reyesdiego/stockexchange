@@ -26,6 +26,9 @@ module.exports.GetQuote = async function ({ axios, model, process }, symbol) {
         });
         if (response.data.Note) {
             throw Error(response.data.Note);
+        } else if (response.data['Error Message']) {
+            throw Error(`${response.data['Error Message']} Try another symbol`);
+
         }
         const metaData = response.data['Global Quote'];
         return new model(
