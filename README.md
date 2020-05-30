@@ -62,8 +62,6 @@ PROVIDER=FAKE_PROVIDER
 
 **Final notes:**
 
-.env and .env.development files are commented in .gitignore to easy sharing the coding task, they must be git ignored.
+.env and .env.development files are commented in .gitignore but should me added into git ignored.
 
-
-
-**Any question about the challenge please send me an email anytime to reyesdiego@hotmail.com**
+**Any question about the repo please send me an email anytime to reyesdiego@hotmail.com**
